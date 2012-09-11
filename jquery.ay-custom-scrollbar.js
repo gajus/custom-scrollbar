@@ -1,5 +1,5 @@
 /**
- * jQuery custom-scrollbar v0.0.1 (2012 SEP 11)
+ * jQuery custom-scrollbar v0.0.3 (2012 SEP 11)
  * https://github.com/anuary/jquery-custom-scrollbar
  *
  * Licensed under the BSD.
@@ -8,19 +8,14 @@
  * Author: Gajus Kuizinas <g.kuizinas@anuary.com>
  */
 (function($){
-	$.fn.ayCustomScrollbar	= function(options)
+	$.fn.ayCustomScrollbar	= function(sl)
 	{
 		this.each(function(){
-			var settings	= $.extend({
-				sl:
-				{
-					wrapper: $(this).find('.wrapper'),
-					scrollbar: $(this).find('.scrollbar'),
-					handle: $(this).find('.handle')
-				}
-			}, options);
-			
-			var sl		= settings.sl;
+			var sl	= $.extend({
+				wrapper: $(this).find('.wrapper'),
+				scrollbar: $(this).find('.scrollbar'),
+				handle: $(this).find('.handle')
+			}, sl);
 			
 			if(!sl.wrapper.length || !sl.scrollbar.length || !sl.handle.length)
 			{
@@ -29,9 +24,29 @@
 			
 			var handle_height		= sl.handle.height();
 			var scrollbar_height	= sl.scrollbar.height();
-			var area_height			= sl.wrapper.find('>').eq(0).height()-scrollbar_height;
+			var content				= sl.wrapper.find('>').eq(0);
 			
-			var ratio	= (scrollbar_height-handle_height)/area_height;
+			var content_height;
+			var ratio;
+			var disabled;
+			
+			content.on('ay-change', function(){
+				content_height	= content.height()-scrollbar_height;
+				ratio			= (scrollbar_height-handle_height)/content_height;
+			
+				if(!isFinite(ratio) || ratio < 0)
+				{
+					sl.scrollbar.addClass('disabled');
+					
+					disabled	= true;
+				}
+				else
+				{
+					sl.scrollbar.removeClass('disabled');
+					
+					disabled	= false;
+				}
+			}).trigger('ay-change');
 			
 			var mousedown;
 			
@@ -53,6 +68,11 @@
 			var top;
 			
 			sl.handle.on('mousedown', function(e){
+				
+				if(disabled)
+				{
+					return;
+				}
 				
 				e.preventDefault();
 				
