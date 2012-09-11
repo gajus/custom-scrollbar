@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="jquery.ay-custom-scrollbar.js"></script>
+	
+	<style>
+	html, body { margin: 0; font: 12px/20px monospace; }
+	
+	body { padding: 20px; }
+	
+	.custom-scrollbar { width: 500px; overflow: hidden; background: #f00; margin-bottom: 20px; }
+	
+	.wrapper { width: 450px; background: #eee; height: 200px; overflow: scroll; float: right; }
+	
+	ul { padding: 0; margin: 0; }
+	li { display: block; height: 49px; margin: 0 0 1px 0; background: #ccc; }
+	
+	.scrollbar { float: left; width: 40px; height: 200px; background: #999; position: relative; }
+	.handle { width: 40px; height: 40px; background: #111; position: absolute; }
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+	$(function(){
+		$('.custom-scrollbar').ayCustomScrollbar();
+	});
+	</script>
+	
+	<div class="custom-scrollbar">
+		<div class="scrollbar">
+			<div class="handle"></div>
+		</div>
+		<div class="wrapper">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>	
+			</ul>
+		</div>
+	</div>
+	
+	<div class="custom-scrollbar">
+		<div class="scrollbar">
+			<div class="handle"></div>
+		</div>
+		<div class="wrapper">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>	
+			</ul>
+		</div>
+	</div>
+	
+	<div class="authorship">
+		This is a demo of the <a href="https://github.com/anuary/jquery-custom-scrollbar" target="_blank">jQuery custom-scrollbar plugin</a>. This script has been developed by <a href="http://anuary.com/gajus" target="_blank">Gajus Kuizinas</a>.
+	</div>
+</body>
+</html>
