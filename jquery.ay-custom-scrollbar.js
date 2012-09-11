@@ -29,7 +29,7 @@
 			
 			var handle_height		= sl.handle.height();
 			var scrollbar_height	= sl.scrollbar.height();
-			var area_height			= sl.wrapper.find('ul').height()-scrollbar_height;
+			var area_height			= sl.wrapper.find('>').eq(0).height()-scrollbar_height;
 			
 			var ratio	= (scrollbar_height-handle_height)/area_height;
 			
