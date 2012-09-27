@@ -9,15 +9,15 @@
 	
 	body { padding: 20px; }
 	
-	.custom-scrollbar { width: 500px; overflow: hidden; background: #f00; margin-bottom: 20px; }
+	.custom-scrollbar { width: 500px; overflow: hidden; margin-bottom: 20px; }
 	
-	.wrapper { width: 450px; background: #eee; height: 200px; overflow: scroll; float: right; }
-	
-	ul { padding: 0; margin: 0; }
-	li { display: block; height: 49px; margin: 0 0 1px 0; background: #ccc; }
-	
-	.scrollbar { float: left; width: 40px; height: 200px; background: #999; position: relative; }
-	.handle { width: 40px; height: 40px; background: #111; position: absolute; }
+	.ay-custom-scrollbar-scrollbar { float: left; width: 40px; height: 200px; background: #999; position: relative; }
+	.ay-custom-scrollbar-handle { width: 40px; height: 40px; background: #111; position: absolute; }
+	.ay-custom-scrollbar-container { width: 450px; background: #eee; height: 200px; overflow: hidden; float: right; }
+	.ay-custom-scrollbar-wrapper { width: 470px; height: 200px; padding-bottom: 20px; overflow: scroll; }
+	.ay-custom-scrollbar-wrapper ul { padding: 0; margin: 0; }
+	.ay-custom-scrollbar-wrapper li { display: block; height: 49px; margin: 0 0 1px 0; background: #ccc; }
+	.ay-custom-scrollbar-wrapper li:nth-child(odd) { background: #c1c1c1; }
 	</style>
 </head>
 <body>
@@ -28,54 +28,31 @@
 	</script>
 	
 	<div class="custom-scrollbar">
-		<div class="scrollbar">
-			<div class="handle"></div>
+		<div class="ay-custom-scrollbar-scrollbar">
+			<div class="ay-custom-scrollbar-handle"></div>
 		</div>
-		<div class="wrapper">
-			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>	
-			</ul>
-		</div>
-	</div>
-	
-	<div class="custom-scrollbar">
-		<div class="scrollbar">
-			<div class="handle"></div>
-		</div>
-		<div class="wrapper">
-			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>	
-			</ul>
+		
+		<div class="ay-custom-scrollbar-container">
+			<div class="ay-custom-scrollbar-wrapper">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>	
+				</ul>
+			</div>
 		</div>
 	</div>
 	

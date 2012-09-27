@@ -1,20 +1,22 @@
 /**
- * jQuery custom-scrollbar v0.0.3 (2012 SEP 11)
+ * jQuery custom-scrollbar v0.0.4 (2012 SEP 27)
  * https://github.com/anuary/jquery-custom-scrollbar
  *
  * Licensed under the BSD.
  * https://github.com/anuary/jquery-custom-scrollbar/blob/master/LICENSE
  *
  * Author: Gajus Kuizinas <g.kuizinas@anuary.com>
+ *
+ * @note Only vertical scrollbar is supported.
  */
 (function($){
 	$.fn.ayCustomScrollbar	= function(sl)
 	{
 		this.each(function(){
 			var sl	= $.extend({
-				wrapper: $(this).find('.wrapper'),
-				scrollbar: $(this).find('.scrollbar'),
-				handle: $(this).find('.handle')
+				wrapper: $(this).find('.ay-custom-scrollbar-wrapper'),
+				scrollbar: $(this).find('.ay-custom-scrollbar-scrollbar'),
+				handle: $(this).find('.ay-custom-scrollbar-handle')
 			}, sl);
 			
 			if(!sl.wrapper.length || !sl.scrollbar.length || !sl.handle.length)
@@ -65,7 +67,7 @@
 			
 			var handle_position		= 0;
 			var last_valid_position	= 0;
-			var top;
+			var top;			
 			
 			sl.handle.on('mousedown', function(e){
 				
@@ -74,15 +76,13 @@
 					return;
 				}
 				
-				e.preventDefault();
-				
 				if(!mousedown)
 				{
 					mousedown	= true;
 					
-					$(window).on('mouseup', function(e){
+					$(document).on('mouseup', function(e){
 			
-						$(window).off('mousemove');
+						$(document).off('mousemove');
 						
 						handle_position	= top;
 						mousedown		= false;
@@ -91,9 +91,12 @@
 				
 				var client_y		= e.clientY;
 				
-				$(window).on('mousemove', function(e){
+				$(document).on('mousemove', function(e){
+				
 					var move	= handle_position+e.clientY-client_y;
 					
+					
+						
 					if(move <= 0)
 					{
 						top	= 0;
