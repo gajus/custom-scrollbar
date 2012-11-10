@@ -11,13 +11,12 @@
 	
 	.custom-scrollbar { width: 500px; overflow: hidden; margin-bottom: 20px; }
 	
-	.ay-custom-scrollbar-scrollbar { float: left; width: 40px; height: 200px; background: #999; position: relative; }
-	.ay-custom-scrollbar-handle { width: 40px; height: 40px; background: #111; position: absolute; }
-	.ay-custom-scrollbar-container { width: 450px; background: #eee; height: 200px; overflow: hidden; float: right; }
-	.ay-custom-scrollbar-wrapper { width: 470px; height: 200px; padding-bottom: 20px; overflow: scroll; }
-	.ay-custom-scrollbar-wrapper ul { padding: 0; margin: 0; }
-	.ay-custom-scrollbar-wrapper li { display: block; height: 49px; margin: 0 0 1px 0; background: #ccc; }
-	.ay-custom-scrollbar-wrapper li:nth-child(odd) { background: #c1c1c1; }
+	.custom-scrollbar .scrollbar { float: left; width: 40px; height: 200px; background: #999; position: relative; }
+	.custom-scrollbar .handle { width: 40px; height: 40px; background: #111; position: absolute; }
+	.custom-scrollbar .container { width: 450px; background: #eee; height: 200px; overflow: hidden; float: right; }
+	.custom-scrollbar .wrapper { width: 470px; height: 200px; padding-bottom: 20px; overflow: scroll; }
+	
+	.custom-content { height: 1000px; background: #f00 url('bg-tile.png'); }
 	</style>
 </head>
 <body>
@@ -28,36 +27,21 @@
 	</script>
 	
 	<div class="custom-scrollbar">
-		<div class="ay-custom-scrollbar-scrollbar">
-			<div class="ay-custom-scrollbar-handle"></div>
+		<div class="scrollbar">
+			<div class="handle"></div>
 		</div>
 		
-		<div class="ay-custom-scrollbar-container">
-			<div class="ay-custom-scrollbar-wrapper">
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>	
-				</ul>
+		<div class="container">
+			<div class="wrapper">
+				<div class="custom-content">
+					
+				</div>
 			</div>
 		</div>
 	</div>
 	
 	<div class="authorship">
-		This is a demo of the <a href="https://github.com/anuary/jquery-custom-scrollbar" target="_blank">jQuery custom-scrollbar plugin</a>. This script has been developed by <a href="http://anuary.com/gajus" target="_blank">Gajus Kuizinas</a>.
+		This is a demo of the <a href="https://github.com/anuary/ay-custom-scrollbar" target="_blank">jQuery custom-scrollbar plugin</a>. This script has been developed by <a href="http://anuary.com/gajus" target="_blank">Gajus Kuizinas</a>.
 	</div>
 </body>
 </html>

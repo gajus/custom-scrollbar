@@ -1,37 +1,42 @@
 /**
- * jQuery custom-scrollbar v0.0.4 (2012 SEP 27)
- * https://github.com/anuary/jquery-custom-scrollbar
+ * jQuery custom-scrollbar v0.0.5 (2012 NOV 10)
+ * https://github.com/anuary/ay-custom-scrollbar
  *
  * Licensed under the BSD.
- * https://github.com/anuary/jquery-custom-scrollbar/blob/master/LICENSE
+ * https://github.com/anuary/ay-custom-scrollbar/blob/master/LICENSE
  *
  * Author: Gajus Kuizinas <g.kuizinas@anuary.com>
  *
  * @note Only vertical scrollbar is supported.
  */
 (function($){
+	$("<style type=\"text/css\"> body.ay-custom-scrollbar { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } </style>").appendTo('head');
+	
 	$.fn.ayCustomScrollbar	= function(sl)
-	{
+	{	
 		this.each(function(){
 			var sl	= $.extend({
-				wrapper: $(this).find('.ay-custom-scrollbar-wrapper'),
-				scrollbar: $(this).find('.ay-custom-scrollbar-scrollbar'),
-				handle: $(this).find('.ay-custom-scrollbar-handle')
+				wrapper: $(this).find('.wrapper'),
+				scrollbar: $(this).find('.scrollbar'),
+				handle: $(this).find('.handle')
 			}, sl);
 			
 			if(!sl.wrapper.length || !sl.scrollbar.length || !sl.handle.length)
 			{
-				throw 'Not all selectors reference exsting elements.';
+				throw 'Not all selector references exist.';
 			}
 			
-			var handle_height		= sl.handle.height();
-			var scrollbar_height	= sl.scrollbar.height();
-			var content				= sl.wrapper.find('>').eq(0);
-			
+			var handle_height		= sl.handle.height(),
+				scrollbar_height	= sl.scrollbar.height(),
+				content				= sl.wrapper.find('>').eq(0);
+				
 			var content_height;
-			var ratio;
+			var	ratio;
 			var disabled;
 			
+			/**
+			 * This event needs to be triggered when the scrollable content is modified.
+			 */
 			content.on('ay-change', function(){
 				content_height	= content.height()-scrollbar_height;
 				ratio			= (scrollbar_height-handle_height)/content_height;
@@ -62,12 +67,35 @@
 				
 				handle_position	= ratio*offset;
 				
-				sl.handle.css({top: ratio*offset});
+				sl.handle.css({top: handle_position});
 			});
 			
-			var handle_position		= 0;
-			var last_valid_position	= 0;
-			var top;			
+			var handle_position		= 0,
+				last_valid_position	= 0;
+			var top;
+			var client_y;
+			
+			var mousemove_event		= function(e){
+				var move	= handle_position+e.clientY-client_y;
+					
+				if(move <= 0)
+				{
+					top	= 0;
+				}
+				else if(move >= scrollbar_height-handle_height)
+				{
+					top	= scrollbar_height-handle_height;
+				}
+				else
+				{
+					top	= move;
+				}
+				
+				sl.wrapper.scrollTop(top/ratio);
+				sl.handle.css({top: top});
+			};
+			
+			var body = $('body');
 			
 			sl.handle.on('mousedown', function(e){
 				
@@ -76,43 +104,22 @@
 					return;
 				}
 				
-				if(!mousedown)
-				{
-					mousedown	= true;
-					
-					$(document).on('mouseup', function(e){
-			
-						$(document).off('mousemove');
-						
-						handle_position	= top;
-						mousedown		= false;
-					});
-				}
+				body.addClass('ay-custom-scrollbar');
 				
-				var client_y		= e.clientY;
+				mousedown	= true;
 				
-				$(document).on('mousemove', function(e){
+				$(document).on('mouseup', function(e){
+					body.removeClass('ay-custom-scrollbar');
 				
-					var move	= handle_position+e.clientY-client_y;
+					$(document).off('mousemove', mousemove_event);
 					
-					
-						
-					if(move <= 0)
-					{
-						top	= 0;
-					}
-					else if(move >= scrollbar_height-handle_height)
-					{
-						top	= scrollbar_height-handle_height;
-					}
-					else
-					{
-						top	= move;
-					}
-					
-					sl.wrapper.scrollTop(top/ratio);
-					sl.handle.css({top: top});
-				});				
+					handle_position	= top;
+					mousedown		= false;
+				});
+				
+				client_y		= e.clientY;
+				
+				$(document).on('mousemove', mousemove_event);				
 			});
 		});
 	};
