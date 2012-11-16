@@ -1,6 +1,6 @@
 # jQuery custom-scrollbar plugin
 
-[jQuery custom-scrollbar plugin](https://github.com/anuary/ay-custom-scrollbar/) is a jQuery plugin that gives a custom look to the native browser scrollbar.
+[jQuery custom-scrollbar plugin](https://github.com/gajus/custom-scrollbar/) is a jQuery plugin that gives a custom look to the native browser scrollbar.
 
 ## Usage
 
@@ -14,4 +14,4 @@ To fully understand the implementation, take a look at the [demonstration](https
 
 ## License & Notes
 
-The BSD License - Copyright (c) 2012 [Gajus Kuizinas](http://anuary.com/gajus).
+The BSD License - Copyright (c) 2012 Gajus Kuizinas.
