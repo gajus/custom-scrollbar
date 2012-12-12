@@ -1,9 +1,9 @@
 /**
- * jQuery custom-scrollbar v0.0.5 (2012 NOV 10)
- * https://github.com/anuary/ay-custom-scrollbar
+ * jQuery custom-scrollbar v0.0.6
+ * https://github.com/gajus/custom-scrollbar
  *
  * Licensed under the BSD.
- * https://github.com/anuary/ay-custom-scrollbar/blob/master/LICENSE
+ * https://github.com/gajus/custom-scrollbar/blob/master/LICENSE
  *
  * Author: Gajus Kuizinas <g.kuizinas@anuary.com>
  *
