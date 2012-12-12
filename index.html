@@ -9,20 +9,26 @@
 	
 	body { padding: 20px; }
 	
-	.custom-scrollbar { width: 500px; overflow: hidden; margin-bottom: 20px; }
+	.custom-scrollbar { width: 550px; overflow: hidden; margin-bottom: 20px; }
 	
-	.custom-scrollbar .scrollbar { float: left; width: 40px; height: 200px; background: #999; position: relative; }
-	.custom-scrollbar .handle { width: 40px; height: 40px; background: #111; position: absolute; }
-	.custom-scrollbar .container { width: 450px; background: #eee; height: 200px; overflow: hidden; float: right; }
-	.custom-scrollbar .wrapper { width: 470px; height: 200px; padding-bottom: 20px; overflow: scroll; }
+	.custom-scrollbar .scrollbar { float: left; width: 20px; height: 200px; background: #999; position: relative; }
+	.custom-scrollbar .handle { width: 20px; height: 20px; background: #111; position: absolute; }
 	
-	.custom-content { height: 1000px; background: #f00 url('bg-tile.png'); }
+	.custom-scrollbar .hide-scrollbar { background: #eee; overflow: hidden; float: right; }
+	.custom-scrollbar .overflow-scroll { padding: 0 20px 0 0; overflow-x: hide; overflow-y: scroll; position: relative; }
+	.custom-scrollbar .hide-scrollbar,
+	.custom-scrollbar .overflow-scroll { width: 500px; height: 200px; }
+	
+	.custom-scrollbar .content { height: 500px; background: url('bg-meter.png') no-repeat 0 0; }
 	</style>
 </head>
 <body>
 	<script type="text/javascript">
 	$(function(){
-		$('.custom-scrollbar').ayCustomScrollbar();
+		$.ay.customScrollbar({
+			container: $('.custom-scrollbar'),
+			scrollbar: $('.scrollbar')
+		});
 	});
 	</script>
 	
@@ -31,11 +37,9 @@
 			<div class="handle"></div>
 		</div>
 		
-		<div class="container">
-			<div class="wrapper">
-				<div class="custom-content">
-					
-				</div>
+		<div class="hide-scrollbar">
+			<div class="overflow-scroll">
+				<div class="content"></div>
 			</div>
 		</div>
 	</div>
