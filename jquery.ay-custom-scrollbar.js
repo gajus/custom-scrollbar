@@ -1,5 +1,5 @@
 /**
- * jQuery custom-scrollbar v0.1.0
+ * jQuery custom-scrollbar v0.1.1
  * https://github.com/gajus/custom-scrollbar
  *
  * Licensed under the BSD.
@@ -33,7 +33,7 @@
 			ratio,
 			disabled;
 		
-		content.on('ay-content-change', function () {
+		options.container.on('ay-content-change', function () {		
 			var real_scrollbar_height = scrollbar_height-handle_height,
 				scrollable_height = content.height()-sl.wrapper.height();
 			
